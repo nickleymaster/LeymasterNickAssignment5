@@ -10,26 +10,43 @@
 
 using namespace std;
 
-int main() {
-    // Step 1: Open the dictionary file
-    ifstream dictfile("words.txt");
-    if (!dictfile) 
-    {
+void loadDictionary(const string& filename, vector<string>& words) {
+    ifstream dictfile(filename);
+    if (!dictfile) {
         cerr << "Error: Could not open dictionary file." << endl;
-        return 1;
+        return;
     }
 
-    // Step 2: Define a vector of strings called words
-    vector<string> words;
     string dictword;
-
-
-    // Step 3: Read words from the dictionary file
-    while (dictfile >> dictword) 
-    {
+    while (dictfile >> dictword) {
         words.push_back(dictword);
     }
     dictfile.close();
+}
+
+
+int main() {
+    loadDictionary("words.txt", words);
+    
+    // Step 1: Open the dictionary file
+    //ifstream dictfile("words.txt");
+    //if (!dictfile) 
+    //{
+    //    cerr << "Error: Could not open dictionary file." << endl;
+    //    return 1;
+    //}
+
+    // Step 2: Define a vector of strings called words
+    //vector<string> words;
+    //string dictword;
+
+
+    // Step 3: Read words from the dictionary file
+    //while (dictfile >> dictword) 
+    //{
+    //    words.push_back(dictword);
+    //}
+    //dictfile.close();
 
     //print the content of the words vector (got this from google)
 	//just used to verify that the words were read correctly
